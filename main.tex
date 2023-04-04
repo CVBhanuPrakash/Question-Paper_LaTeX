@@ -1,0 +1,739 @@
+\documentclass[12pt, a4paper]{article}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{multicol}
+\RequirePackage{ragged2e}
+\RequirePackage{graphicx}
+\RequirePackage{amsmath}
+\RequirePackage{xcolor}
+\RequirePackage{geometry}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{tcolorbox}
+\usepackage{xparse}
+\geometry{top = 2.5cm, bottom = 2.5cm, left = 1.5cm, right = 1.5cm}
+\makeatletter
+  \def\vhrulefill#1{\leavevmode\leaders\hrule\@height#1\hfill \kern\z@}
+\makeatother
+
+%-----------------------------------------------------------
+%       TO START EDITING THE DOCUMENT JUMP TO LINE 148
+%-----------------------------------------------------------
+\title{Question Paper}
+\author{Learn Basics}
+\date{Feb 2022}
+%------------------------------------------------------------
+%                    HEADER INFORMATION
+%------------------------------------------------------------
+\newcommand{\hdr}[6]{
+\begin{center}
+    {\Huge #1}\\{\vspace{3mm}#2}\\\vspace{3mm}
+    {\Large \textbf{#3\vspace{2.5mm}\\#4\rule{120}{1.0}}}\\
+\end{center}
+\begin{raggedleft}
+{\large \textbf{#5 \hfill #6}\\}\vspace{3mm} 
+\vhrulefill{5pt}
+\end{raggedleft}}
+
+%------------------------------------------------------------
+%                  GENERAL INSTRUCTIONS
+%------------------------------------------------------------
+\newcommand{\geninstructions}[1]{
+\begin{raggedright}
+\vspace{3mm}
+\textbf{\large INSTRUCTIONS}
+\textit{
+\begin{itemize}
+    #1
+\end{itemize}}
+\hrulefill\\
+\hrulefill \\\vspace{5mm}
+\end{raggedright}}
+
+%-----------------------------------------------------------
+%                   QUESTION SECTION
+%-----------------------------------------------------------
+\newcommand{\questionsection}[3]{
+\vspace{1.5mm}
+\begin{center}
+    \textbf{\large \underline{SECTION - #1}}\\
+{\small \textbf{#2}}
+\end{center}
+{\small 
+\textit{\begin{itemize}[noitemsep, topsep=0pt]
+    #3
+\end{itemize}}}}
+
+%-----------------------------------------------------------
+%              2 OPTION MCQ SEPARATED IN 2 COLS
+%-----------------------------------------------------------
+\newcommand{\mcqtwotwo}[9]{
+\vspace{2.5mm}
+\begin{raggedright}
+\textbf{Question #1:} #2 \hfill \textit{#7}\\
+\textit{#8}\\
+#9
+\begin{multicols}{2}{}
+(a) #3\\
+\columnbreak
+(b) #4\\
+
+\end{multicols}
+\end{raggedright}}
+
+%-----------------------------------------------------------
+%              4 OPTION MCQ SEPARATED IN 4 COLS
+%-----------------------------------------------------------
+\newcommand{\mcqfourfour}[9]{
+\vspace{2.5mm}
+\begin{raggedright}
+\textbf{Question #1:} #2 \hfill \textit{#7}\\
+\textit{#8}\\
+#9
+\begin{multicols}{4}{}
+(a) #3\\
+\columnbreak
+(b) #4\\
+\columnbreak
+(c) #5\\
+\columnbreak
+(d) #6\\
+\end{multicols}
+\end{raggedright}}
+
+%-----------------------------------------------------------
+%              4 OPTION MCQ SEPARATED IN 2 COLS
+%-----------------------------------------------------------
+\newcommand{\mcqfourtwo}[9]{
+\vspace{2.5mm}
+\begin{raggedright}
+\textbf{Question #1:} #2 \hfill \textit{#7}\\
+\textit{#8}\\
+#9
+\begin{multicols}{2}{}
+(a) #3\\
+(c) #5\\
+\columnbreak
+(b) #4\\
+(d) #6\\
+\end{multicols}
+\end{raggedright}}
+
+%-----------------------------------------------------------
+%              4 OPTION MCQ IN 1 COLUMN
+%-----------------------------------------------------------
+\newcommand{\mcqfour}[9]{
+\vspace{2.5mm}
+\begin{raggedright}
+\textbf{Question #1:} #2 \hfill \textit{#7}\\
+\textit{#8}\\
+#9
+(a) #3\\
+(b) #4\\
+(c) #5\\
+(d) #6\\
+\end{raggedright}}
+
+%-----------------------------------------------------------
+%              4 OPTION MCQ WITH IMAGE ON LEFT
+%-----------------------------------------------------------
+
+\newcommand{\mcqfourimg}[9]{
+\vspace{1.5mm}
+\begin{raggedright}
+\textbf{Question #1:} #2 \hfill \textit{#7}\\
+\medskip
+%%%
+\end{raggedright}
+\begin{minipage}{0.6\linewidth}
+\includegraphics[ width = #9, keepaspectratio]{#8}
+\end{minipage}\hfill
+\begin{minipage}{0.40\linewidth}
+
+% \begin{raggedright}
+(a) #3\\
+(b) #4\\
+(c) #5\\
+(d) #6\\
+% \end{raggedright}
+\end{minipage}
+}
+
+-----------------------------% EXTENTION %----------------------------------
+\newcommand{\mcqfourfour}[9]{
+\vspace{1.5mm}
+\begin{raggedright}
+\textbf{Question #1:} #2 \hfill \textit{#7}\\
+\textit{#8}\\
+#9
+\begin{multicols}{4}{}
+\begin{enumerate}
+\item(a) #3\\
+\columnbreak
+\item(b) #4\\
+\columnbreak
+\item(c) #5\\
+\columnbreak
+\item(d) #6\\
+\ewn{enumerate}
+\end{multicols}
+\end{raggedright}}
+
+%-----------------------------------------------------------
+%                   DESCRIPTIVE QUESTION
+%-----------------------------------------------------------
+\newcommand{\question}[4]{
+\vspace{1.5mm}
+\begin{raggedright}
+\textbf{Question #1:} #2\hfill\textit{#3}\\
+\textit{#4}\\
+\end{raggedright}}
+
+%-----------------------------------------------------------
+%                   INCLUDE IMAGE
+%-----------------------------------------------------------
+% Include a single image
+\newcommand{\img}[5]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[ width = #1, height = #2]{#3}
+    \end{figure}
+}
+% Include two images side by side
+\newcommand{\imgtwo}[8]{
+    \begin{figure}[h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width= #1, height = #2]{#3}
+  \caption{#4}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width= #5, height = #6]{#7}
+  \caption{#8}
+\end{subfigure}
+\end{figure}
+}
+
+%-----------------------------------------------------------
+%                        EQUATIONS
+%-----------------------------------------------------------
+\newcommand{\equ}[1]{
+    \begin{center}
+        $#1$
+    \end{center}
+    
+}
+%-----------------------------------------------------------------------------------------------------------------------------------------                 BEGIN EDITING HERE                          ------------------------------------------------------------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Details about the oraganizing institute and the exam
+% \header{Instituition name}{Address}{Subject}{Exam Name}{Time}{Max. Marks}
+
+\hdr{Learn Basics - Lotus Public School}{LaPIS Diagnostic Test - Class 6}{Mathematics - Question Paper Code - 602}{Roll Number }{2 hours}{40 marks}
+
+
+% Provide general exam instructions here
+% \geninstructions{
+%       \item Instruction 1
+%       \item Instruction 2
+%       \item Instruction 3 and so on... }
+\geninstructions{
+\begin{enumerate}
+\item How to fill the roll number
+\begin{itemize}
+\item It is instructed to the students to write your roll number in the boxes and shade the corresponding bubble in the omr sheet.
+\item Kindly ensure, the roll number always have 6 numeric characters.
+\end{itemize}
+\item How to fill the question paper code
+\begin{itemize}
+\item It is instructed to the students to write the question paper code in the boxes which is given in the question paper and shade the corresponding bubble in the OMR sheet.
+\item Kindly ensure, the question paper code always have 3 numeric characters.
+\end{itemize}
+\item General Instructions
+\begin{itemize}
+\item The question paper consists of 40 questions.
+\item Each question carries  .
+\item Total duration of examination is 2 hours.
+\item All questions in the booklet are objective type.
+\item For each question, five options are given whereas option e indicates yet to learn / I will learn later.
+\item It is instructed to the students to use black ball point pen to shade the correct answer in the OMR sheet.
+\end{itemize}
+\end{enumerate}}
+
+% Begin question sections here
+% \questionsection{section name}{section description}{Section specific instructions. Leave blank if there aren't any}
+
+
+% Below is the template of a four option mcq organized into two columns. 
+% \mcqfourtwo{Question number}{Question statement}
+%            {Option a}
+%            {Option b}
+%            [Option c]
+%            {Option d}
+%   { marks }{hints if any}{Images or equations if any}
+
+
+%-----------------------------------------------------------
+%                        Question [ 1 ]
+%-----------------------------------------------------------
+%question_start
+\mcqfourfour{1}{Find the place value of 8 in 248753.}
+{Thousand}
+{Ten thousand}
+{Hundred}
+{Lakh}
+{ }{}{}
+%question_end
+
+%-----------------------------------------------------------
+%                        Question [ 5 ]
+%-----------------------------------------------------------
+
+ 
+
+%-----------------------------------------------------------
+%                        Question [ 8 ]
+%-----------------------------------------------------------
+%question_start
+\mcqfourfour{3}{Find the LCM of 25, 60 and 10.}
+{120}
+{300}
+{250}
+{150}
+{ }{}{}
+%question_end
+%-----------------------------------------------------------
+%                        Question [ 9 ]
+%-----------------------------------------------------------
+
+\mcqfourtwo{4}{A number with more than two factors is called as \rule{60}{0.5} number.}
+{Composite}
+{Prime}
+{Co-prime}
+{Neither prime nor composite}
+{ }
+
+%-----------------------------------------------------------
+%                        Question [ 10 ]
+%-----------------------------------------------------------
+%question_start
+\mcqfourtwo{5}{Match the following :}
+{i – b, ii – c, iii - a}
+{i – c, ii – b, iii - a}
+{ i – b, ii – a, iii - c}
+{i – c, ii – a, iii - b}
+{ }{}{\begin{tabular}{|c|c||c|c|}
+    \hline
+        &   Properties  &   & Equation\\
+    \hline
+    i   &  associative  &  a & $a b+a c=a(b+c)$\\
+    \hline
+    ii   & commutative  &  b & $a+(b+c)=(a+b)+c$\\
+    \hline
+    iii   & distributive  & c  & $a+b=b+a$\\
+    \hline
+\end{tabular}}
+%question_end
+%-----------------------------------------------------------
+%                        Question [ 11 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{6}{Identify the greatest integer among the following options.}
+{-176}
+{-19}
+{-1}
+{-564}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 12  ]
+%-----------------------------------------------------------
+
+\mcqfourfour{7}{Which of the following option is an equivalent fraction of $\frac{6}{9} ?$ }
+{$\frac{36}{54}$}
+{$\frac{24}{18}$}
+{$\frac{12}{18}$}
+{Both a and c}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 14  ]
+%-----------------------------------------------------------
+
+\mcqfourfour{8}{Find the Improper fraction.}
+{$\frac{3}{9}$}
+{$\frac{82}{99}$}
+{$\frac{45}{96}$}
+{$\frac{52}{36}$}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 16 ]
+%-----------------------------------------------------------
+
+\mcqtwotwo{9}{State true or false. $2 \frac{1}{3}-\frac{2}{3}=\frac{16}{3}$ }
+{True}
+{False}
+{}
+{}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 17 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{10}{Choose the fraction representing the shaded portion of the figure shown below.}
+{$\frac{1}{7}$}
+{$\frac{2}{7}$}
+{$\frac{5}{7}$}
+{$\frac{3}{7}$}
+{ }{\img{14cm}{4cm}{q12.jpg}{}{}{}}
+
+%-----------------------------------------------------------
+%                        Question [ 18 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{11}{Express $\left(300+60+9+\frac{7}{10}+\frac{2}{100}\right)$in decimal.}
+{36.972}
+{369.72}
+{379.72}
+{356.72}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 19 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{12}{33.54 +  0.007 – 2.4 = \rule{60pt}{0.5pt}}
+{31.127}
+{31.147}
+{31.157}
+{31.527}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 21 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{13}{Find out the wrong pair.}
+{0.96 $>$ 0.92}
+{0.054 $>$ 0.6}
+{0.4 $<$ 0.6}
+{78.9 $>$ 66.4}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 22 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{14}{How many variables are present in the expression $5 x+4 y-3 z+2 x-y$ ?}
+{5}
+{3}
+{2}
+{4}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 23 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{15}{Match the following:}
+{i-c, ii-b, iii-a}
+{i-a, ii-b, iii-c}
+{i-a, ii-c, iii-b}
+{i-b, ii-c, iii-a}
+{ }{\img{14cm}{4cm}{q15.jpg}{}{}{}}
+
+%-----------------------------------------------------------
+%                        Question [ 24 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{16}{The cost of a bat is Rs. $8 x$ and the cost of a ball Rs.$5 x$. Find the total cost of a bat and a ball ?}  
+{Rs. $40 x$}
+{Rs $13 x$}
+{Rs. $40 x^{2}$}
+{Rs. $40$}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 26 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{17}{The number of blue balls is 125 less than the number of green balls. If the total number of balls is 275, then find the number of green balls.}
+{450}
+{900}
+{200}
+{175}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 27 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{18}{Find the ratio of 2kg to 800g in simplest form.}
+{2:800}
+{1:400}
+{5:2}
+{2:5}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 28 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{19}{Anu and Abi ate chocolates in the ratio 4:9.If Abi ate 36 chocolates, then find the number of chocolates Anu ate?}
+{16 chocolates}
+{81 chocolates}
+{72 chocolates}
+{56 chocolates}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 29  ]
+%-----------------------------------------------------------
+
+\mcqfourfour{20}{Find the odd one out using the idea of equivalent ratio.}
+{3:7 and 3:8}
+{10:5 and 20:15}
+{3:6 and 6:12}
+{1:5 and 7:11}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 30 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{21}{If one milkshake costs Rs.35,how many milkshakes can be bought for Rs.140?}
+{4}
+{8}
+{5}
+{10}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 31 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{22}{Find the value of x in the following proportion.                                                $10: 8:: x: 24$}
+{30}
+{35}
+{100}
+{50}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 33 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{23}{Fill in the blanks with correct symbol.$(136+19)$ \rule{60pt}{0.5pt} $(173-28)$}
+{$<$}
+{$>$}
+{$=$}
+{None}
+{ }{}{}
+
+
+%-----------------------------------------------------------
+%                        Question [ 36 ]
+%-----------------------------------------------------------
+
+\mcqtwotwo{24}{State whether the following statement is true or false.
+        Zero is a natural number as well as whole number}
+{True}
+{False}
+{}
+{}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 37 ]
+%-----------------------------------------------------------
+
+\mcqtwotwo{25}{State whether the following statement is true or false.The quotient of 1584 $\div$ 3 even number.}
+{True}
+{False}
+{}
+{}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 40 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{26}{How many lines of symmetry can be drawn in circle?}
+{Two}
+{Four}
+{Infinite}
+{Twenty }
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 41  ]
+%-----------------------------------------------------------
+
+\mcqfourfour{27}{Perpendicular bisector of a line intersect at \rule{60pt}{0.5pt}}
+{$45^{\circ}$}
+{$90^{\circ}$}
+{$180^{\circ}$}
+{$0^{\circ}$}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 43 ]
+%-----------------------------------------------------------
+
+\mcqfourtwo{28}{Match the following: Hint : l = length, b = breadth, a = Side length}
+{i- c, ii - b, iii – d, iv - a}
+{i- d, ii - a, iii – b, iv - c}
+{i- d, ii - b, iii – a, iv - c}
+{i- b, ii - a, iii – d, iv - c}
+{ }{\img{14cm}{4cm}{q28.jpg}{}{}{}}
+
+%-----------------------------------------------------------
+%                        Question [ 44 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{29}{Find the area of a rectangular box whose length is 45m breadth is 31m.}
+{$76 \mathrm{~m}^{2}$}
+{$152 \mathrm{~m}^{2}$}
+{$1395 \mathrm{~m}^{2}$}
+{$2025 \mathrm{~m}^{2}$}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 47  ]
+%-----------------------------------------------------------
+\mcqfourtwo{30}{Match the following:{\img{10cm}{4cm}{q30.jpg}{}{}{}}}
+{i- b, ii - c, iii - a}
+{i- a, ii - c, iii - b}
+{i- c, ii - b, iii – a}
+{i- a, ii - c, iii - b}
+{ }
+
+
+%-----------------------------------------------------------
+%                        Question [ 48 ]
+%-----------------------------------------------------------
+
+\mcqfourtwo{31}{What does the given figure represent ?{\img{4cm}{4cm}{q31.jpg}{}{}{}}}
+{Non intersecting lines}
+{Parallel lines}
+{Perpendicular lines }
+{Intersecting lines}
+{ }
+
+%-----------------------------------------------------------
+%                        Question [ 51 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{32}{Name the angle formed in the figure ?{\img{4cm}{4cm}{q32.jpg}{}{}{}}}
+{$\angle R O T$}
+{$\angle O R T$}
+{$\angle O T R$}
+{$\angle R T O$}
+{ }
+
+%-----------------------------------------------------------
+%                        Question [ 54 ]
+%-----------------------------------------------------------
+
+\mcqfourtwo{33}{Match the following:}
+{i- a, ii - b, iii - c}
+{i- b, ii - c, iii - a}
+{i- c, ii - b, iii – a}
+{i- a, ii - c, iii - b}
+{}
+    {\imgtwo{4cm}{4cm}{q33-1.jpg}{}{10cm}{4cm}{q33-2.jpg}{}}
+
+
+%-----------------------------------------------------------
+%                        Question [ 58  ]
+%-----------------------------------------------------------
+
+\mcqfourtwo{34}{Match the following:{\img{10cm}{3cm}{q34.jpg}{}{}{}}}
+{i- c, ii - a, iii - b}
+{i- b, ii - c, iii - a}
+{i- c, ii - b, iii – a}
+{i- a, ii - b, iii - c}
+{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 59 ]
+%-----------------------------------------------------------
+
+\mcqfourtwo{35}{Match the following:{\img{14cm}{4cm}{q35.jpg}{}{}{}}}
+{i - b, ii - c, iii - a}
+{i - c, ii - a ,iii - b}
+{i - c, ii - b, iii – a}
+{i - a, ii - c, iii - b}
+{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 64 ]
+%-----------------------------------------------------------
+
+\mcqfourtwo{36}{Find the odd one.}
+{Scalene triangle - three unequal sides}
+{Isosceles triangle - two equal sides}
+{Equilateral triangle - three equal sides}
+{Right angled triangle – all sides equal }
+{ }{}{}
+
+
+%-----------------------------------------------------------
+%                        Question [ 66  ]
+%-----------------------------------------------------------
+
+\mcqfourimg{37}{Match the following.}
+{i – b, ii – c, iii – a, iv - d}
+{i – c, ii – b, iii – a, iv - d}
+{i – c, ii – d , iii – b, iv - a}
+{i – b, ii – a, iii – c, iv - d}
+{}{q37.jpg}{10cm}
+
+
+%-----------------------------------------------------------
+%                        Question [ 70 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{38}{Represent number 8 in tally marks ?{\img{8cm}{1cm}{q38.jpg}{}{}}}
+{1}
+{2}
+{3}
+{4}
+{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 72  ]
+%-----------------------------------------------------------
+
+\mcqfourfour{39}{In which subject Aadhan scores the highest mark, when a cup = 1mark  ?{\img{14cm}{4cm}{q39.jpg}{}{}}}
+{English }
+{Maths}
+{Science}
+{Tamil}
+{ }{}{}
+
+%-----------------------------------------------------------
+%                        Question [ 73 ]
+%-----------------------------------------------------------
+
+\mcqfourfour{40}{Find the difference in number of children who like red colour and blue colour?\img{14cm}{4cm}{q40.jpg}{}{}{}}
+{20}
+{140}
+{60}
+{80}
+{}
+
+
+
+%-----------------End of Question Paper ------------%
+%-------DON'T DELETE--------------
+
+\end{document}
